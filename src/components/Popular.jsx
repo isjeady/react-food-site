@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { getPopularService } from '../service/recipes.service';
 
 const Popular = () => {
 
@@ -9,22 +10,21 @@ const Popular = () => {
     }, []);
 
     const getPopular = async () => {
-        const api = await fetch(`https://api.spoonacular.com/recipes/random?number=10&tags=vegetarian,dessert&apiKey=${process.env.REACT_APP_API_KEY}`);
+        const data = await getPopularService();
+        if(data && data.recipes){
+            setPopular(data.recipes);
 
-        const data = await api.json();
-
-        setPopular(data.recipes);
-
+        }
         console.log(data);
     }
 
     return <div>
         {popular.map((item,idx) => {
-            return <div>
+            return <div key={idx}>
                 N:{idx+1}
                 <pre>
                     <code>
-                        {JSON.stringify(item,undefined,2)}
+                        {JSON.stringify(item.title,undefined,2)}
                     </code>
                 </pre>
                 <hr></hr>
