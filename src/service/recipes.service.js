@@ -1,5 +1,13 @@
 import { getService } from "./http.service";
-import { generateUrl, recipesUrl,recipesComplexSearchUrl } from "./url";
+import { generateUrl, recipesUrl,recipesInformationUrl,recipesComplexSearchUrl } from "./url";
+
+const getRecipesInformationService = async (id) => {
+    const params = [];
+
+    const url = generateUrl(recipesInformationUrl(id),params);
+
+    return  await getService(url);
+}
 
 const getPopularService = async (number = 10, tags = "vegetarian,dessert") => {
     const params = [
@@ -24,4 +32,4 @@ const getRecipesComplexSearchService = async (cuisine = "",number = 10,query = "
     return  await getService(url);
 }
 
-export { getPopularService,getRecipesComplexSearchService }
+export { getPopularService,getRecipesComplexSearchService,getRecipesInformationService }
