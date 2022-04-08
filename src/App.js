@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Category from './components/Category';
+import Menu from './components/menu/Menu';
 import Cuisine from './pages/Cuisine';
 import Home from './pages/Home';
 
 function App() {
   return (
     <BrowserRouter>
-      <Category />
+      <Menu />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cuisine/:type" element={<Cuisine />} />

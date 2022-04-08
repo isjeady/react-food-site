@@ -1,5 +1,5 @@
 import React from 'react'
-import Category from '../components/Category'
+import Category from '../components/menu/Category'
 import Pasta from '../components/Pasta'
 import Popular from '../components/Popular'
 
