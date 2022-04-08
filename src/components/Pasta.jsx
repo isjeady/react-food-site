@@ -25,7 +25,7 @@ const Pasta = () => {
           const data = await getPopularService(10,'pasta');
           console.log(data);
           if(data && data.recipes){
-              localStorage.setItem(localStorageKey, JSON.stringify(data.results))
+              localStorage.setItem(localStorageKey, JSON.stringify(data.recipes))
               setPasta(data.recipes);
           }
       }

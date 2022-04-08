@@ -4,7 +4,7 @@ import { generateUrl, recipesUrl,recipesComplexSearchUrl } from "./url";
 const getPopularService = async (number = 10, tags = "vegetarian,dessert") => {
     const params = [
         { key : "number" , value : number},
-        { key : "tags" , value : "vegetarian,dessert"},
+        { key : "tags" , value : tags},
     ];
 
     const url = generateUrl(recipesUrl,params);
