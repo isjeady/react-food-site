@@ -6,6 +6,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import Gradient from './ui/Gradient';
 import Card from './ui/Card';
+import { Link } from 'react-router-dom';
 
 const Pasta = () => {
   const localStorageKey = "pasta"
@@ -43,9 +44,11 @@ const Pasta = () => {
           {pasta.map((item,idx) => {
               return <SplideSlide key={idx}>
                   <Card>
-                      <p>{item.title}</p>
-                      <img src={item.image} alt={item.tile} />
-                      <Gradient />
+                      <Link to={`/detail/${item.id}`}>
+                        <p>{item.title}</p>
+                        <img src={item.image} alt={item.tile} />
+                        <Gradient />
+                      </Link>
                   </Card>
               </SplideSlide>
           })}

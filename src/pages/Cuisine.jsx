@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getRecipesComplexSearchService } from '../service/recipes.service';
 import _ from 'lodash';
 import styled from "styled-components";
@@ -28,8 +28,10 @@ const Cuisine = () => {
           {cuisine.map(item => {
             return(
               <Card key={item.id}>
-                <img src={item.image} alt="" />
-                <h4>{item.title}</h4> 
+                <Link to={`/detail/${item.id}`}>
+                  <img src={item.image} alt="" />
+                  <h4>{item.title}</h4> 
+                </Link>
               </Card>
             );
           })}
