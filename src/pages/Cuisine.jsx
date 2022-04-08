@@ -3,13 +3,12 @@ import Category from '../components/Category'
 import Pasta from '../components/Pasta'
 import Popular from '../components/Popular'
 
-const Home = () => {
+const Cuisine = () => {
   return (
     <div>
-        <Pasta />
-        <Popular />
+        Cuisine
     </div>
   )
 }
 
-export default Home;
+export default Cuisine;
