@@ -1,7 +1,7 @@
 import { getService } from "./http.service";
 import { generateUrl, recipesUrl,recipesComplexSearchUrl } from "./url";
 
-const getPopularService = async (number = 10) => {
+const getPopularService = async (number = 10, tags = "vegetarian,dessert") => {
     const params = [
         { key : "number" , value : number},
         { key : "tags" , value : "vegetarian,dessert"},
