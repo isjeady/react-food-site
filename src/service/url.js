@@ -1,6 +1,7 @@
 const SERVER_URL = "https://api.spoonacular.com";
 
 const recipesUrl  = "/recipes/random";
+const recipesComplexSearchUrl  = "/recipes/complexSearch";
 
 
 
@@ -23,4 +24,9 @@ const generateUrl = (url,params = []) => {
 
 
 
-export {SERVER_URL, recipesUrl,generateUrl};
+export {
+    SERVER_URL, 
+    recipesUrl,
+    recipesComplexSearchUrl,
+    generateUrl
+};

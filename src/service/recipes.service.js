@@ -1,9 +1,9 @@
 import { getService } from "./http.service";
-import { generateUrl, recipesUrl } from "./url";
+import { generateUrl, recipesUrl,recipesComplexSearchUrl } from "./url";
 
-const getPopularService = async () => {
+const getPopularService = async (number = 10) => {
     const params = [
-        { key : "number" , value : 10},
+        { key : "number" , value : number},
         { key : "tags" , value : "vegetarian,dessert"},
     ];
 
@@ -12,4 +12,15 @@ const getPopularService = async () => {
     return  await getService(url);
 }
 
-export { getPopularService }
+const getRecipesComplexSearchService = async (query,number = 10) => {
+    const params = [
+        { key : "number" , value : number},
+        { key : "query" , value : query},
+    ];
+
+    const url = generateUrl(recipesComplexSearchUrl,params);
+
+    return  await getService(url);
+}
+
+export { getPopularService,getRecipesComplexSearchService }

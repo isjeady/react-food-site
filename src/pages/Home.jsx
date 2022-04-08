@@ -1,12 +1,11 @@
 import React from 'react'
-import Favorite from '../components/Favorite'
+import Pasta from '../components/Pasta'
 import Popular from '../components/Popular'
 
 const Home = () => {
   return (
     <div>
-        Home
-        <Favorite />
+        <Pasta />
         <Popular />
     </div>
   )
