@@ -12,10 +12,10 @@ const getPopularService = async (number = 10, tags = "vegetarian,dessert") => {
     return  await getService(url);
 }
 
-const getRecipesComplexSearchService = async (query,number = 10) => {
+const getRecipesComplexSearchService = async (cuisine = 'American',number = 10) => {
     const params = [
         { key : "number" , value : number},
-        { key : "query" , value : query},
+        { key : "cuisine" , value : cuisine},
     ];
 
     const url = generateUrl(recipesComplexSearchUrl,params);
