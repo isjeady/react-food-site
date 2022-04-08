@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Menu from './components/menu/Menu';
 import Cuisine from './pages/Cuisine';
@@ -6,15 +7,19 @@ import Home from './pages/Home';
 import Searched from './pages/Searched';
 
 function App() {
+
   return (
     <BrowserRouter>
       <Menu />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cuisine/:type" element={<Cuisine />} />
-        <Route path="/search/:searchValue" element={<Searched />} />
-        <Route path="/detail/:id" element={<Detail />} />
-      </Routes>
+      <AnimatePresence exitBeforeEnter> 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cuisine/:type" element={<Cuisine />} />
+          <Route path="/search/:searchValue" element={<Searched />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="*" element={<Home />}></Route>
+        </Routes>
+       </AnimatePresence> 
     </BrowserRouter>
   );
 }

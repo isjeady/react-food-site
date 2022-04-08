@@ -21,15 +21,16 @@ const Detail = () => {
   const [tab,setTab] = useState(1);
 
   useEffect(() => {
-    getInfo();
-  }, [id]);
-
-  const getInfo = async () => {
+    const getInfo = async () => {
       const data = await getRecipesInformationService(id);
       if(data && data.title){
         setDetail(data);
       }
-  }
+    }
+    getInfo();
+  }, [id]);
+
+
 
   return <>
     {detail && <DetailWrapper>
@@ -38,14 +39,14 @@ const Detail = () => {
         <img src={detail.image} alt="" />
       </div>
       <Info>
-        <Button className={tab == 1 ? "active"  :""} onClick={() => setTab(1)}>Instructions</Button>
-        <Button className={tab == 2 ? "active"  :""} onClick={() => setTab(2)}>Ingedients</Button>
+        <Button className={tab === 1 ? "active"  :""} onClick={() => setTab(1)}>Instructions</Button>
+        <Button className={tab === 2 ? "active"  :""} onClick={() => setTab(2)}>Ingedients</Button>
         
-        {tab == 1 && <div>
+        {tab === 1 && <div>
           <h3 dangerouslySetInnerHTML={{__html : detail.summary}}></h3>
           <h3 dangerouslySetInnerHTML={{__html : detail.instructions}}></h3>
         </div>}
-        {tab == 2 && <ul>
+        {tab === 2 && <ul>
           {detail.extendedIngredients.map((ing) => {
             return <li key={ing.id}>{ing.original}</li>
           })}

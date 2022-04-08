@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { getPopularService, getRecipesComplexSearchService } from '../service/recipes.service';
+import { getPopularService } from '../service/recipes.service';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 
 import '@splidejs/splide/dist/css/splide.min.css';

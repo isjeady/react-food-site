@@ -11,15 +11,17 @@ const Searched = () => {
   const [results,setResults] = useState([]);
   
   useEffect(() => {
-    getSearched();
-  }, [searchValue]);
-
-  const getSearched = async () => {
+    const getSearched = async () => {
       const data = await getRecipesComplexSearchService(null,10,searchValue);
       if(data && data.results){
         setResults(data.results);
       }
-  }
+    }
+
+    getSearched();
+  }, [searchValue]);
+
+  
 
   return (
     <>

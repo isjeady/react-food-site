@@ -4,38 +4,48 @@ import { getRecipesComplexSearchService } from '../service/recipes.service';
 import _ from 'lodash';
 import styled from "styled-components";
 import Title from '../components/ui/Title';
+import { motion } from 'framer-motion'
 
 const Cuisine = () => {
 
   const {type} = useParams();
   const [cuisine,setCuisine] = useState([]);
   
-  useEffect(() => {
-    getCuisine();
-  }, [type]);
+  
 
-  const getCuisine = async () => {
+  useEffect(() => {
+    const getCuisine = async () => {
       const data = await getRecipesComplexSearchService(_.capitalize(type));
       if(data && data.results){
           setCuisine(data.results);
       }
-  }
+    }
+    getCuisine();
+  }, [type]);
+
 
   return (
     <>
       <Title>{_.capitalize(type)}</Title>
-      <Grid>
-          {cuisine.map(item => {
-            return(
-              <Card key={item.id}>
-                <Link to={`/detail/${item.id}`}>
-                  <img src={item.image} alt="" />
-                  <h4>{item.title}</h4> 
-                </Link>
-              </Card>
-            );
-          })}
-      </Grid>
+      <motion.div
+        animate={{ opacity: 1}}
+        initial={{ opacity: 0}}
+        exit={{ opacity: 0}}
+        transition={{ dutaion : 0.5}}
+      >
+        <Grid>
+            {cuisine.map(item => {
+              return(
+                <Card key={item.id}>
+                  <Link to={`/detail/${item.id}`}>
+                    <img src={item.image} alt="" />
+                    <h4>{item.title}</h4> 
+                  </Link>
+                </Card>
+              );
+            })}
+        </Grid>
+      </motion.div>
     </>
   )
 }
