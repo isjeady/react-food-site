@@ -7,6 +7,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 
 const Popular = () => {
 
+    const localStorageKey = "popular"
     const [popular,setPopular] = useState([]);
     
     useEffect(() => {
@@ -14,10 +15,17 @@ const Popular = () => {
     }, []);
 
     const getPopular = async () => {
-        const data = await getPopularService();
-        console.log(data);
-        if(data && data.recipes){
-            setPopular(data.recipes);
+        const localStore = localStorage.getItem(localStorageKey);
+
+        if(localStore){
+            setPopular(JSON.parse(localStore));
+        }else{
+            const data = await getPopularService();
+            console.log(data);
+            if(data && data.recipes){
+                localStorage.setItem(localStorageKey, JSON.stringify(data.recipes))
+                setPopular(data.recipes);
+            }
         }
     }
 
@@ -48,7 +56,7 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
-    min-height : 25rem;
+    min-height : 23rem;
     border-radius: 2rem;
     overflow : hidden;
     position : relative;
@@ -63,7 +71,6 @@ const Card = styled.div`
     }
 
     p {
-        /* 
         position: absolute;
         z-index: 10;
         left: 50%;
@@ -71,7 +78,6 @@ const Card = styled.div`
         transform: translate(-50%,0%);
         color: white;
         display: flex; 
-        */
         width: 100%;
         text-align: center;
         font-weight: 600;
@@ -85,6 +91,8 @@ const Card = styled.div`
 const Gradient = styled.div`
     z-index: 3;
     position: absolute;
+    top:20px;
+    bottom : 10px;
     width: 100%;
     height: 100%;
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
