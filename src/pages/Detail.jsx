@@ -6,7 +6,7 @@ import { getRecipesInformationService } from '../service/recipes.service';
 const Detail = () => {
   const {id} = useParams();
   const [detail,setDetail] = useState({
-    title : "Titolo",
+    /* title : "Titolo",
     image: "https://spoonacular.com/recipeImages/716429-556x370.jpg",
     summary : "lorem Ipsum",
     instructions : "lorem Ipsum",
@@ -16,7 +16,7 @@ const Detail = () => {
       { id : 1, original : "lorem Ipsum"},
       { id : 1, original : "lorem Ipsum"},
       { id : 1, original : "lorem Ipsum"},
-    ]
+    ] */
   });
   const [tab,setTab] = useState(1);
 
